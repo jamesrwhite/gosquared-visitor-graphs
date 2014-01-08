@@ -21,7 +21,7 @@
 		// Config
 		// Note: you should keep your api key secret so it's probably best not to make this page public!
 		var API_KEY = 'YOUR API KEY';
-		var SITE_TOKEN = 'SITE TOKEN';
+		var SITE_TOKEN = 'YOUR SITE TOKEN';
 		var MONTHS = 12;
 
 		$.GoSquared({
@@ -39,7 +39,8 @@
 			// Did something go wrong? :(
 			if (error) {
 
-				alert(error);
+				alert('Error! See the console for more info..');
+				console.log(error);
 
 			}
 
@@ -49,7 +50,7 @@
 			for (var key in data.list) {
 
 				month_views[i] = {
-					month: moment(data.list[key].to).format('MMMM'),
+					month: moment(data.list[key].to).format('MMM'),
 					visitors: data.list[key].metrics.visits
 				};
 

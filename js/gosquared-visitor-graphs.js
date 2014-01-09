@@ -24,7 +24,7 @@
 				// Create the data table structure
 				var chart_data = new google.visualization.DataTable();
 				chart_data.addColumn('string', 'Month');
-				chart_data.addColumn('number', 'Vistors');
+				chart_data.addColumn('number', options.title);
 
 				// Add all the visitor data to it
 				for (var key in month_views) {

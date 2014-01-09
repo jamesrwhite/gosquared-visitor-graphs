@@ -9,7 +9,7 @@
 
 			month_views[i] = {
 				month: moment(data.list[key].to).format('MMM'),
-				data: data.list[key].metrics[options.type]
+				data: data.list[key].metrics[options.metric]
 			};
 
 			i++;
@@ -36,8 +36,9 @@
 
 				}
 
-				// Instantiate and draw our chart, passing in some options.
-				var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+				// Instantiate and draw our chart, passing in some options
+				var chart_type = options.type + 'Chart';
+				var chart = new google.visualization[chart_type](document.getElementById('chart'));
 				chart.draw(chart_data, {
 					title: options.title + ' per Month'
 				});
@@ -72,21 +73,22 @@
 
 			// If not, draw the requested chart!
 			drawChart(data, {
-				type: 'visits',
-				title: 'Visitors'
+				metric: 'visits',
+				title: 'Visitors',
+				type: 'Column'
 			});
 
-			// And handle when the type is changed!
-			$('#type').on('change', function() {
+			// And handle when the metric is changed!
+			$('#metric, #type').on('change', function() {
 
-				// Get the type and title selected
-				var $this = $(this);
-				var type = $(this).val(),
-					title = $(this).find(':selected').text();
+				// Get the metric and title selected
+				var $metric = $('#metric'),
+					$type = $('#type');
 
 				drawChart(data, {
-					type: type,
-					title: title
+					metric: $metric.val(),
+					title: $metric.find(':selected').text(),
+					type: $type.val()
 				});
 
 			});

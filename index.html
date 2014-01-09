@@ -3,13 +3,15 @@
 	<style>
 		html, body, #chart {
 			width: 100%;
-			height: 100%;
+			height: 95%;
 		}
 
 		h1 {
 			font-size: .9em;
 			font-weight: normal;
 			font-family: sans-serif;
+			text-align: center;
+			margin-top: 5%;
 		}
 	</style>
 	<title>GoSquared Visitor Graphs</title>
@@ -18,14 +20,22 @@
 <body>
 
 	<h1>
-		<select id="type">
+		Show
+		<select id="metric">
 			<option value="visits">Visitors</option>
 			<option value="month_uniques">Uniques</option>
 			<option value="pageviews">Page Views</option>
 			<option value="new_visits">New Visitors</option>
 			<option value="returning_visits">Returning Visitors</option>
 		</select>
-		per Month
+		per Month on a
+		<select id="type">
+			<option value="Column">Vertical Bar Chart</option>
+			<option value="Bar">Horizontal Bar Chart</option>
+			<option value="Line">Line Chart</option>
+			<option value="Area">Area Chart</option>
+			<option value="Pie">Pie Chart</option>
+		</select>
 	</h1>
 	<div id="chart">Loading..</div>
 

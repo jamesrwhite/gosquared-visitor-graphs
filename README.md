@@ -1,7 +1,7 @@
 GoSquared Visitor Graphs
 =======================
 
-A very simple page to visualise visitor statistics for your site on a month by month basic using the GoSquared API. Makes use of https://github.com/gosquared/gosquared-jquery.
+A very simple way to visualise visitor statistics for your site on a month by month basic using the GoSquared API. Makes use of https://github.com/gosquared/gosquared-jquery.
 
 Usage
 =====

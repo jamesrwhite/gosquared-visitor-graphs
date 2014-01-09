@@ -1,12 +1,12 @@
 GoSquared Visitor Graphs
 =======================
 
-A very simple page to visualise visitors to your site over time using the GoSquared API. In it's default configuration you are shown the total visitors per month for the past 12 months although it should be pretty simple to work out how to change it show unique visitors for example (See: https://github.com/gosquared/gosquared-jquery).
+A very simple page to visualise visitor statistics for your site on a month by month basic using the GoSquared API. Makes use of https://github.com/gosquared/gosquared-jquery.
 
 Usage
 =====
 
-Set the ````API_KEY```` and ````SITE_TOKEN```` variables in index.html to that of your own site and away you go!
+Create your own config.json file based off config.example.json and fill out the details.
 
 Screenshots
 ===========

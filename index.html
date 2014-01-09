@@ -5,93 +5,35 @@
 			width: 100%;
 			height: 100%;
 		}
+
+		h1 {
+			font-size: .9em;
+			font-weight: normal;
+			font-family: sans-serif;
+		}
 	</style>
 	<title>GoSquared Visitors per Month</title>
 </head>
 
 <body>
 
+	<h1>
+		<select id="type">
+			<option value="visits">Visitors</option>
+			<option value="month_uniques">Uniques</option>
+			<option value="pageviews">Page Views</option>
+			<option value="new_visits">New Visitors</option>
+			<option value="returning_visits">Returning Visitors</option>
+		</select>
+		per Month
+	</h1>
 	<div id="chart">Loading..</div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.0/moment.min.js"></script>
 	<script src="//www.google.com/jsapi"></script>
 	<script src="js/gosquared.min.js"></script>
-	<script>
-		// Config
-		// Note: you should keep your api key secret so it's probably best not to make this page public!
-		var API_KEY = 'YOUR API KEY';
-		var SITE_TOKEN = 'YOUR SITE TOKEN';
-		var MONTHS = 12;
-
-		$.GoSquared({
-			api_key: API_KEY,
-			site_token: SITE_TOKEN,
-		});
-
-		// Get the monthly visits data
-		$.GoSquared.trends.v2.aggregate({
-			from: +moment().subtract('months', MONTHS),
-			to: +new Date(),
-			interval: 'month'
-		}, function(error, data) {
-
-			// Did something go wrong? :(
-			if (error) {
-
-				alert('Error! See the console for more info..');
-				console.log(error);
-
-			}
-
-			var month_views = [], i = 0;
-
-			// Loop through the data and get the number of vists for each month
-			for (var key in data.list) {
-
-				month_views[i] = {
-					month: moment(data.list[key].to).format('MMM'),
-					visitors: data.list[key].metrics.visits
-				};
-
-				i++;
-
-			}
-
-			// Load the Visualization API and the piechart package.
-			google.load('visualization', '1.0', {
-				packages: ['corechart'],
-				callback: function() {
-
-					// Create the data table structure
-					var chart_data = new google.visualization.DataTable();
-					chart_data.addColumn('string', 'Month');
-					chart_data.addColumn('number', 'Vistors');
-
-					// Add all the visitor data to it
-					for (var key in month_views) {
-
-						chart_data.addRow([
-							month_views[key].month,
-							month_views[key].visitors
-						]);
-
-					}
-
-					// Set chart options
-					var options = {
-						title: 'Visitors per Month'
-					};
-
-					// Instantiate and draw our chart, passing in some options.
-					var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
-					chart.draw(chart_data, options);
-
-				}
-			});
-
-		});
-	</script>
+	<script src="js/gosquared-visitor-graphs.js"></script>
 
 </body>
 </html>

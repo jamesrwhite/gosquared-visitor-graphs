@@ -52,7 +52,6 @@
             to: +new Date(),
             interval: 'month'
         }, function(error, data) {
-
             // Did something go wrong? :(
             if (error) {
                 alert('Error! See the console for more info..');
